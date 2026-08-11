@@ -27,6 +27,12 @@
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
   --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bitter", ui-serif, Georgia, serif;
+  --color-brand-green: var(--brand-green);
+  --color-brand-green-dark: var(--brand-green-dark);
+  --color-mint: var(--mint);
+  --color-coral: var(--coral);
+  --color-coral-dark: var(--coral-dark);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -71,6 +77,13 @@
 
 :root {
   --radius: 0.5rem;
+  /* Reference palette */
+  --brand-green: oklch(0.5 0.075 163);
+  --brand-green-dark: oklch(0.43 0.07 163);
+  --mint: oklch(0.958 0.021 165);
+  --coral: oklch(0.665 0.16 39);
+  --coral-dark: oklch(0.6 0.16 39);
+
   /* #FAFAF7 */
   --background: oklch(0.984 0.005 106);
   /* #5F6B65 body text */
