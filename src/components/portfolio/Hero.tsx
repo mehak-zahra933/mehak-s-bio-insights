@@ -1,17 +1,15 @@
-import heroImage from "@/assets/hero-helix.jpg";
+import heroAsset from "@/assets/lab-plate.jpg.asset.json";
 
 export function Hero() {
   return (
     <section id="home" className="px-4 pt-5 sm:px-6">
       <div className="relative mx-auto w-full max-w-[76rem] overflow-hidden rounded-2xl bg-ink">
         <img
-          src={heroImage}
-          width={1024}
-          height={1152}
-          alt="Abstract line illustration of a DNA double helix connected to a molecular data network"
-          className="h-[26rem] w-full object-cover opacity-70 sm:h-[32rem]"
+          src={heroAsset.url}
+          alt="Gloved hand holding a multi-well cell culture plate in front of DNA sequencing data"
+          className="h-[26rem] w-full object-cover opacity-75 sm:h-[32rem]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-ink/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/65 to-ink/40" />
 
         <div className="absolute inset-0 flex flex-col justify-between p-7 sm:p-10">
           <div className="flex items-start justify-between gap-8">
