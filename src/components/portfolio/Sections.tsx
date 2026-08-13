@@ -7,49 +7,56 @@ export function SectionHeader({
   title,
   intro,
 }: {
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
   intro?: ReactNode;
 }) {
   return (
     <Reveal className="max-w-2xl">
-      <p className="eyebrow">{eyebrow}</p>
-      <h2 className="mt-3 text-3xl font-semibold sm:text-4xl">{title}</h2>
-      {intro ? <p className="mt-4 leading-relaxed">{intro}</p> : null}
-      <span className="mt-6 block h-px w-16 bg-sage-light" />
+      {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
+      <h2 className="mt-2 font-display text-3xl font-black tracking-tight uppercase sm:text-4xl">
+        {title}
+      </h2>
+      {intro ? (
+        <p className="mt-4 text-sm leading-relaxed tracking-wide uppercase">{intro}</p>
+      ) : null}
     </Reveal>
   );
 }
 
 export function About() {
   return (
-    <section id="about" className="border-b border-border py-20 sm:py-24">
-      <div className="section-shell">
-        <SectionHeader
-          eyebrow="About"
-          title="About Me"
-          intro="I'm a Bioinformatics student focused on using computational approaches to analyze biological data and solve real-world problems. My work sits between molecular biology and software — writing Python to process sequences and datasets, and applying machine learning where it genuinely helps interpretation."
-        />
+    <section id="about" className="px-4 py-16 sm:px-6">
+      <div className="mx-auto w-full max-w-[76rem]">
+        <SectionHeader title="About Me" />
+        <Reveal className="mt-5 max-w-3xl text-sm leading-[1.9] tracking-wide uppercase">
+          I&apos;m a <span className="font-semibold text-orange">Bioinformatics</span>{" "}
+          student based in Pakistan, with a passion for computational biology,
+          biological data analysis and Python. I turn complex biological data into
+          meaningful insights, and I&apos;m also exploring artificial intelligence and
+          machine learning.
+        </Reveal>
 
         <Reveal className="mt-8 flex flex-wrap gap-2" delay={80}>
           {interests.map((item) => (
             <span
               key={item}
-              className="rounded-md border border-border bg-card px-3 py-1.5 text-sm"
+              className="rounded-full border border-border px-3 py-1.5 text-[0.65rem] tracking-[0.14em] uppercase"
             >
               {item}
             </span>
           ))}
         </Reveal>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-5 rounded-2xl border border-border bg-card p-7 sm:grid-cols-2 lg:grid-cols-4">
           {aboutCards.map((card, i) => (
-            <Reveal
-              key={card.title}
-              delay={i * 70}
-              className="card-lift rounded-lg border border-border bg-card p-6"
-            >
-              <h3 className="text-base font-semibold">{card.title}</h3>
+            <Reveal key={card.title} delay={i * 70}>
+              <h3 className="font-display text-lg font-bold text-orange">
+                0{i + 1}
+              </h3>
+              <p className="mt-2 text-sm font-semibold tracking-wide text-ink uppercase">
+                {card.title}
+              </p>
               <p className="mt-2 text-sm leading-relaxed">{card.body}</p>
             </Reveal>
           ))}
@@ -61,28 +68,24 @@ export function About() {
 
 export function Skills() {
   return (
-    <section id="skills" className="border-b border-border py-20 sm:py-24">
-      <div className="section-shell">
-        <SectionHeader
-          eyebrow="Skills"
-          title="Technical Skills"
-          intro="Tools and methods I work with across programming, bioinformatics, and machine learning."
-        />
-        <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+    <section id="skills" className="px-4 py-16 sm:px-6">
+      <div className="mx-auto w-full max-w-[76rem]">
+        <SectionHeader title="Skills" />
+        <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {skillGroups.map((group, i) => (
             <Reveal
               key={group.title}
               delay={i * 60}
-              className="card-lift rounded-lg border border-border bg-card p-6"
+              className="card-lift rounded-2xl border border-border bg-card p-6"
             >
-              <h3 className="text-sm font-semibold tracking-wide text-heading uppercase">
+              <h3 className="text-sm font-semibold tracking-[0.14em] text-ink uppercase">
                 {group.title}
               </h3>
               <ul className="mt-4 flex flex-wrap gap-2">
                 {group.items.map((item) => (
                   <li
                     key={item}
-                    className="rounded-md bg-accent px-2.5 py-1 text-[0.8rem] text-accent-foreground"
+                    className="rounded-full bg-cream-deep px-2.5 py-1 text-[0.7rem] tracking-wide uppercase"
                   >
                     {item}
                   </li>
@@ -98,21 +101,17 @@ export function Skills() {
 
 export function Toolkit() {
   return (
-    <section className="border-b border-border py-20 sm:py-24">
-      <div className="section-shell">
-        <SectionHeader
-          eyebrow="Toolkit"
-          title="My Bioinformatics Toolkit"
-          intro="Software and platforms I use for sequence, variant, and structural work."
-        />
-        <div className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-3 lg:grid-cols-7">
+    <section className="px-4 py-16 sm:px-6">
+      <div className="mx-auto w-full max-w-[76rem]">
+        <SectionHeader title="Toolkit" />
+        <div className="mt-10 flex flex-wrap gap-2">
           {toolkit.map((tool) => (
-            <div
+            <span
               key={tool}
-              className="flex items-center justify-center bg-card px-3 py-6 text-sm font-medium text-heading transition-colors hover:bg-accent"
+              className="rounded-full border border-border bg-card px-4 py-2 text-[0.68rem] font-medium tracking-[0.14em] text-ink uppercase transition-colors hover:bg-orange"
             >
               {tool}
-            </div>
+            </span>
           ))}
         </div>
       </div>
@@ -122,24 +121,29 @@ export function Toolkit() {
 
 export function WhatIDo() {
   return (
-    <section className="border-b border-border py-20 sm:py-24">
-      <div className="section-shell">
-        <SectionHeader eyebrow="Services" title="What I Do" />
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+    <section className="px-4 py-8 sm:px-6">
+      <div className="mx-auto w-full max-w-[76rem] rounded-2xl bg-ink px-6 py-12 sm:px-12">
+        <h2 className="text-center font-display text-3xl font-black tracking-tight text-cream uppercase sm:text-4xl">
+          Services
+        </h2>
+        <ul className="mx-auto mt-8 max-w-3xl">
           {services.map((s, i) => (
             <Reveal
+              as="li"
               key={s.title}
-              delay={i * 70}
-              className="card-lift rounded-lg border border-border bg-card p-6"
+              delay={i * 60}
+              className="group flex items-center gap-5 border-b border-cream/15 px-4 py-4 transition-colors last:border-0 hover:bg-cream/5"
             >
-              <span className="text-xs font-semibold text-sage">
-                0{i + 1}
-              </span>
-              <h3 className="mt-3 text-base font-semibold">{s.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed">{s.body}</p>
+              <span className="text-xs font-semibold text-orange">0{i + 1}</span>
+              <div>
+                <p className="text-base font-semibold tracking-[0.06em] text-cream uppercase group-hover:text-orange">
+                  {s.title}
+                </p>
+                <p className="mt-1 text-sm text-cream/60">{s.body}</p>
+              </div>
             </Reveal>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );
