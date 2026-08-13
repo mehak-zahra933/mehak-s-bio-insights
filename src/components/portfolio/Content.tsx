@@ -2,6 +2,8 @@ import { ArrowUpRight, Github, ExternalLink } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { SectionHeader } from "./Sections";
 import { projects, experiences, education, profile } from "./data";
+import genomeAsset from "@/assets/genome.jpg.asset.json";
+
 
 export function Projects() {
   const [featured, ...rest] = projects;
