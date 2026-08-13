@@ -150,7 +150,9 @@ export function WhatIDo() {
             </Reveal>
           ))}
         </ul>
+        </div>
       </div>
+
     </section>
   );
 }
