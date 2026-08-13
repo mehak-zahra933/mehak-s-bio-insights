@@ -2,6 +2,8 @@ import { ArrowUpRight, Github, ExternalLink } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { SectionHeader } from "./Sections";
 import { projects, experiences, education, profile } from "./data";
+import genomeAsset from "@/assets/genome.jpg.asset.json";
+
 
 export function Projects() {
   const [featured, ...rest] = projects;
@@ -180,8 +182,13 @@ export function Education() {
 export function Contact() {
   return (
     <section id="contact" className="px-4 py-8 sm:px-6">
-      <div className="mx-auto w-full max-w-[76rem] rounded-2xl bg-ink px-7 py-12 sm:px-12">
-        <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr]">
+      <div
+        className="relative mx-auto w-full max-w-[76rem] overflow-hidden rounded-2xl bg-ink bg-cover bg-center px-7 py-12 sm:px-12"
+        style={{ backgroundImage: `url(${genomeAsset.url})` }}
+      >
+        <div className="absolute inset-0 bg-ink/88" />
+        <div className="relative grid gap-10 lg:grid-cols-[1.2fr_0.8fr]">
+
           <div>
             <h2 className="max-w-xl font-display text-3xl leading-tight font-black text-cream uppercase sm:text-5xl">
               Let&apos;s Start Project Together?

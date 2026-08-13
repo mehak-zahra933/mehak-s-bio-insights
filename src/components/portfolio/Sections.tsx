@@ -1,6 +1,8 @@
 import type { ReactNode } from "react";
 import { Reveal } from "./Reveal";
 import { aboutCards, interests, skillGroups, services, toolkit } from "./data";
+import helixAsset from "@/assets/helix.jpg.asset.json";
+
 
 export function SectionHeader({
   eyebrow,
@@ -122,10 +124,16 @@ export function Toolkit() {
 export function WhatIDo() {
   return (
     <section className="px-4 py-8 sm:px-6">
-      <div className="mx-auto w-full max-w-[76rem] rounded-2xl bg-ink px-6 py-12 sm:px-12">
+      <div
+        className="relative mx-auto w-full max-w-[76rem] overflow-hidden rounded-2xl bg-ink bg-cover bg-center px-6 py-12 sm:px-12"
+        style={{ backgroundImage: `url(${helixAsset.url})` }}
+      >
+        <div className="absolute inset-0 bg-ink/85" />
+        <div className="relative">
         <h2 className="text-center font-display text-3xl font-black tracking-tight text-cream uppercase sm:text-4xl">
           Services
         </h2>
+
         <ul className="mx-auto mt-8 max-w-3xl">
           {services.map((s, i) => (
             <Reveal
@@ -144,7 +152,9 @@ export function WhatIDo() {
             </Reveal>
           ))}
         </ul>
+        </div>
       </div>
+
     </section>
   );
 }
