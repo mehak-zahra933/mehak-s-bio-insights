@@ -1,6 +1,8 @@
 import type { ReactNode } from "react";
 import { Reveal } from "./Reveal";
 import { aboutCards, interests, skillGroups, services, toolkit } from "./data";
+import helixAsset from "@/assets/helix.jpg.asset.json";
+
 
 export function SectionHeader({
   eyebrow,
