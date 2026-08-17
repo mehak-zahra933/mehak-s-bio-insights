@@ -2,7 +2,9 @@ import { ArrowUpRight, Github, ExternalLink } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { SectionHeader } from "./Sections";
 import { projects, experiences, education, profile } from "./data";
-import genomeAsset from "@/assets/genome.jpg.asset.json";
+import genomeAsset from "@/assets/image-8.png.asset.json";
+import projectsAsset from "@/assets/image-6.png.asset.json";
+import eduAsset from "@/assets/image-10.png.asset.json";
 
 
 export function Projects() {
@@ -27,8 +29,12 @@ export function Projects() {
 
         {featured ? (
           <Reveal className="mt-8 grid gap-8 border-t border-border pt-8 lg:grid-cols-[1.1fr_1fr]">
-            <div className="relative overflow-hidden rounded-2xl bg-cream-deep p-8">
-              <p className="font-display text-2xl font-black text-ink uppercase">
+            <div
+              className="relative min-h-[14rem] overflow-hidden rounded-2xl bg-ink bg-cover bg-center p-8"
+              style={{ backgroundImage: `url(${projectsAsset.url})` }}
+            >
+              <div className="absolute inset-0 bg-ink/70" />
+              <p className="relative font-display text-2xl font-black text-cream uppercase">
                 {featured.category}
               </p>
               <span className="absolute right-6 bottom-6 flex h-14 w-14 items-center justify-center rounded-full bg-orange text-ink">
@@ -137,10 +143,15 @@ export function Experience() {
 
 export function Education() {
   return (
-    <section id="education" className="px-4 py-16 sm:px-6">
-      <div className="mx-auto w-full max-w-[76rem]">
+    <section
+      id="education"
+      className="relative bg-cover bg-center px-4 py-16 sm:px-6"
+      style={{ backgroundImage: `url(${eduAsset.url})` }}
+    >
+      <div className="absolute inset-0 bg-background/90" />
+      <div className="relative mx-auto w-full max-w-[76rem]">
         <SectionHeader title="Education" />
-        <Reveal className="mt-10 grid gap-8 rounded-2xl border border-border bg-card p-8 lg:grid-cols-3">
+        <Reveal className="mt-10 grid gap-8 rounded-2xl border border-border bg-card/95 p-8 backdrop-blur-sm lg:grid-cols-3">
           <div>
             <h3 className="font-display text-xl font-black uppercase">
               {education.degree}

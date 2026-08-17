@@ -1,7 +1,9 @@
 import type { ReactNode } from "react";
 import { Reveal } from "./Reveal";
 import { aboutCards, interests, skillGroups, services, toolkit } from "./data";
-import helixAsset from "@/assets/helix.jpg.asset.json";
+import helixAsset from "@/assets/image-12.png.asset.json";
+import toolkitAsset from "@/assets/image-9.png.asset.json";
+import aboutAsset from "@/assets/image-11.png.asset.json";
 
 
 export function SectionHeader({
@@ -50,18 +52,24 @@ export function About() {
           ))}
         </Reveal>
 
-        <div className="mt-10 grid gap-5 rounded-2xl border border-border bg-card p-7 sm:grid-cols-2 lg:grid-cols-4">
-          {aboutCards.map((card, i) => (
-            <Reveal key={card.title} delay={i * 70}>
-              <h3 className="font-display text-lg font-bold text-orange">
-                0{i + 1}
-              </h3>
-              <p className="mt-2 text-sm font-semibold tracking-wide text-ink uppercase">
-                {card.title}
-              </p>
-              <p className="mt-2 text-sm leading-relaxed">{card.body}</p>
-            </Reveal>
-          ))}
+        <div
+          className="relative mt-10 overflow-hidden rounded-2xl border border-border bg-cover bg-center"
+          style={{ backgroundImage: `url(${aboutAsset.url})` }}
+        >
+          <div className="absolute inset-0 bg-card/94" />
+          <div className="relative grid gap-5 p-7 sm:grid-cols-2 lg:grid-cols-4">
+            {aboutCards.map((card, i) => (
+              <Reveal key={card.title} delay={i * 70}>
+                <h3 className="font-display text-lg font-bold text-orange">
+                  0{i + 1}
+                </h3>
+                <p className="mt-2 text-sm font-semibold tracking-wide text-ink uppercase">
+                  {card.title}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed">{card.body}</p>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -105,16 +113,24 @@ export function Toolkit() {
   return (
     <section className="px-4 py-16 sm:px-6">
       <div className="mx-auto w-full max-w-[76rem]">
-        <SectionHeader title="Toolkit" />
-        <div className="mt-10 flex flex-wrap gap-2">
-          {toolkit.map((tool) => (
-            <span
-              key={tool}
-              className="rounded-full border border-border bg-card px-4 py-2 text-[0.68rem] font-medium tracking-[0.14em] text-ink uppercase transition-colors hover:bg-orange"
-            >
-              {tool}
-            </span>
-          ))}
+        <div
+          className="relative overflow-hidden rounded-2xl bg-cover bg-center p-8 sm:p-12"
+          style={{ backgroundImage: `url(${toolkitAsset.url})` }}
+        >
+          <div className="absolute inset-0 bg-cream/92" />
+          <div className="relative">
+            <SectionHeader title="Toolkit" />
+            <div className="mt-10 flex flex-wrap gap-2">
+              {toolkit.map((tool) => (
+                <span
+                  key={tool}
+                  className="rounded-full border border-border bg-card px-4 py-2 text-[0.68rem] font-medium tracking-[0.14em] text-ink uppercase transition-colors hover:bg-orange"
+                >
+                  {tool}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

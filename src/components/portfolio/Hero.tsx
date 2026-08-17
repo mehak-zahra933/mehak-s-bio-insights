@@ -1,4 +1,4 @@
-import heroAsset from "@/assets/lab-plate.jpg.asset.json";
+import heroAsset from "@/assets/image-7.png.asset.json";
 
 export function Hero() {
   return (
@@ -6,10 +6,10 @@ export function Hero() {
       <div className="relative mx-auto w-full max-w-[76rem] overflow-hidden rounded-2xl bg-ink">
         <img
           src={heroAsset.url}
-          alt="Gloved hand holding a multi-well cell culture plate in front of DNA sequencing data"
-          className="h-[26rem] w-full object-cover opacity-75 sm:h-[32rem]"
+          alt="Researcher analysing microscopy imaging data in a molecular biology lab"
+          className="h-[26rem] w-full object-cover opacity-70 sm:h-[32rem]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/65 to-ink/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/35" />
 
         <div className="absolute inset-0 flex flex-col justify-between p-7 sm:p-10">
           <div className="flex items-start justify-between gap-8">
