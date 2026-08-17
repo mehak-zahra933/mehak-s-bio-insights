@@ -1,7 +1,9 @@
 import type { ReactNode } from "react";
 import { Reveal } from "./Reveal";
 import { aboutCards, interests, skillGroups, services, toolkit } from "./data";
-import helixAsset from "@/assets/helix.jpg.asset.json";
+import helixAsset from "@/assets/image-12.png.asset.json";
+import toolkitAsset from "@/assets/image-9.png.asset.json";
+import aboutAsset from "@/assets/image-11.png.asset.json";
 
 
 export function SectionHeader({

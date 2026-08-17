@@ -2,7 +2,9 @@ import { ArrowUpRight, Github, ExternalLink } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { SectionHeader } from "./Sections";
 import { projects, experiences, education, profile } from "./data";
-import genomeAsset from "@/assets/genome.jpg.asset.json";
+import genomeAsset from "@/assets/image-8.png.asset.json";
+import projectsAsset from "@/assets/image-6.png.asset.json";
+import eduAsset from "@/assets/image-10.png.asset.json";
 
 
 export function Projects() {
