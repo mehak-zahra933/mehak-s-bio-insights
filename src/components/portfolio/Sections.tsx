@@ -52,18 +52,24 @@ export function About() {
           ))}
         </Reveal>
 
-        <div className="mt-10 grid gap-5 rounded-2xl border border-border bg-card p-7 sm:grid-cols-2 lg:grid-cols-4">
-          {aboutCards.map((card, i) => (
-            <Reveal key={card.title} delay={i * 70}>
-              <h3 className="font-display text-lg font-bold text-orange">
-                0{i + 1}
-              </h3>
-              <p className="mt-2 text-sm font-semibold tracking-wide text-ink uppercase">
-                {card.title}
-              </p>
-              <p className="mt-2 text-sm leading-relaxed">{card.body}</p>
-            </Reveal>
-          ))}
+        <div
+          className="relative mt-10 overflow-hidden rounded-2xl border border-border bg-cover bg-center"
+          style={{ backgroundImage: `url(${aboutAsset.url})` }}
+        >
+          <div className="absolute inset-0 bg-card/94" />
+          <div className="relative grid gap-5 p-7 sm:grid-cols-2 lg:grid-cols-4">
+            {aboutCards.map((card, i) => (
+              <Reveal key={card.title} delay={i * 70}>
+                <h3 className="font-display text-lg font-bold text-orange">
+                  0{i + 1}
+                </h3>
+                <p className="mt-2 text-sm font-semibold tracking-wide text-ink uppercase">
+                  {card.title}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed">{card.body}</p>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </div>
     </section>
