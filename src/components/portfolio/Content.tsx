@@ -29,8 +29,12 @@ export function Projects() {
 
         {featured ? (
           <Reveal className="mt-8 grid gap-8 border-t border-border pt-8 lg:grid-cols-[1.1fr_1fr]">
-            <div className="relative overflow-hidden rounded-2xl bg-cream-deep p-8">
-              <p className="font-display text-2xl font-black text-ink uppercase">
+            <div
+              className="relative min-h-[14rem] overflow-hidden rounded-2xl bg-ink bg-cover bg-center p-8"
+              style={{ backgroundImage: `url(${projectsAsset.url})` }}
+            >
+              <div className="absolute inset-0 bg-ink/70" />
+              <p className="relative font-display text-2xl font-black text-cream uppercase">
                 {featured.category}
               </p>
               <span className="absolute right-6 bottom-6 flex h-14 w-14 items-center justify-center rounded-full bg-orange text-ink">
