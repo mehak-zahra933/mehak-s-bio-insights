@@ -145,10 +145,11 @@ export function Education() {
   return (
     <section
       id="education"
-      className="bg-cover bg-center px-4 py-16 sm:px-6"
+      className="relative bg-cover bg-center px-4 py-16 sm:px-6"
       style={{ backgroundImage: `url(${eduAsset.url})` }}
     >
-      <div className="mx-auto w-full max-w-[76rem]">
+      <div className="absolute inset-0 bg-background/90" />
+      <div className="relative mx-auto w-full max-w-[76rem]">
         <SectionHeader title="Education" />
         <Reveal className="mt-10 grid gap-8 rounded-2xl border border-border bg-card/95 p-8 backdrop-blur-sm lg:grid-cols-3">
           <div>
