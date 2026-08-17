@@ -143,10 +143,14 @@ export function Experience() {
 
 export function Education() {
   return (
-    <section id="education" className="px-4 py-16 sm:px-6">
+    <section
+      id="education"
+      className="bg-cover bg-center px-4 py-16 sm:px-6"
+      style={{ backgroundImage: `url(${eduAsset.url})` }}
+    >
       <div className="mx-auto w-full max-w-[76rem]">
         <SectionHeader title="Education" />
-        <Reveal className="mt-10 grid gap-8 rounded-2xl border border-border bg-card p-8 lg:grid-cols-3">
+        <Reveal className="mt-10 grid gap-8 rounded-2xl border border-border bg-card/95 p-8 backdrop-blur-sm lg:grid-cols-3">
           <div>
             <h3 className="font-display text-xl font-black uppercase">
               {education.degree}
