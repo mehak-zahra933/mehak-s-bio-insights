@@ -1,9 +1,10 @@
 import type { ReactNode } from "react";
 import { Reveal } from "./Reveal";
 import { aboutCards, interests, skillGroups, services, toolkit } from "./data";
-import helixAsset from "@/assets/image-12.png.asset.json";
-import toolkitAsset from "@/assets/image-9.png.asset.json";
 import aboutAsset from "@/assets/image-11.png.asset.json";
+import skillsBg from "@/assets/skills-bg.png";
+import servicesBg from "@/assets/services-bg.png";
+import toolkitBg from "@/assets/toolkit-bg.png";
 
 
 export function SectionHeader({
@@ -79,30 +80,36 @@ export function About() {
 export function Skills() {
   return (
     <section id="skills" className="px-4 py-16 sm:px-6">
-      <div className="mx-auto w-full max-w-[76rem]">
-        <SectionHeader title="Skills" />
-        <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {skillGroups.map((group, i) => (
-            <Reveal
-              key={group.title}
-              delay={i * 60}
-              className="card-lift rounded-2xl border border-border bg-card p-6"
-            >
-              <h3 className="text-sm font-semibold tracking-[0.14em] text-ink uppercase">
-                {group.title}
-              </h3>
-              <ul className="mt-4 flex flex-wrap gap-2">
-                {group.items.map((item) => (
-                  <li
-                    key={item}
-                    className="rounded-full bg-cream-deep px-2.5 py-1 text-[0.7rem] tracking-wide uppercase"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-          ))}
+      <div
+        className="relative mx-auto w-full max-w-[76rem] overflow-hidden rounded-3xl border border-border bg-cover bg-center p-8 sm:p-12 shadow-sm"
+        style={{ backgroundImage: `url(${skillsBg})` }}
+      >
+        <div className="absolute inset-0 bg-background/90 backdrop-blur-[2px]" />
+        <div className="relative">
+          <SectionHeader title="Skills" />
+          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {skillGroups.map((group, i) => (
+              <Reveal
+                key={group.title}
+                delay={i * 60}
+                className="card-lift rounded-2xl border border-border/80 bg-card/95 backdrop-blur-sm p-6 shadow-sm"
+              >
+                <h3 className="text-sm font-semibold tracking-[0.14em] text-ink uppercase">
+                  {group.title}
+                </h3>
+                <ul className="mt-4 flex flex-wrap gap-2">
+                  {group.items.map((item) => (
+                    <li
+                      key={item}
+                      className="rounded-full bg-cream-deep px-2.5 py-1 text-[0.7rem] font-medium tracking-wide uppercase text-ink/90"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -114,17 +121,17 @@ export function Toolkit() {
     <section className="px-4 py-16 sm:px-6">
       <div className="mx-auto w-full max-w-[76rem]">
         <div
-          className="relative overflow-hidden rounded-2xl bg-cover bg-center p-8 sm:p-12"
-          style={{ backgroundImage: `url(${toolkitAsset.url})` }}
+          className="relative overflow-hidden rounded-3xl border border-border bg-cover bg-center p-8 sm:p-12 shadow-sm"
+          style={{ backgroundImage: `url(${toolkitBg})` }}
         >
-          <div className="absolute inset-0 bg-cream/92" />
+          <div className="absolute inset-0 bg-background/90 backdrop-blur-[2px]" />
           <div className="relative">
             <SectionHeader title="Toolkit" />
-            <div className="mt-10 flex flex-wrap gap-2">
+            <div className="mt-10 flex flex-wrap gap-2.5">
               {toolkit.map((tool) => (
                 <span
                   key={tool}
-                  className="rounded-full border border-border bg-card px-4 py-2 text-[0.68rem] font-medium tracking-[0.14em] text-ink uppercase transition-colors hover:bg-orange"
+                  className="rounded-full border border-border bg-card/95 px-4 py-2 text-[0.68rem] font-medium tracking-[0.14em] text-ink uppercase shadow-xs transition-colors hover:bg-orange hover:text-white hover:border-orange"
                 >
                   {tool}
                 </span>
@@ -141,36 +148,35 @@ export function WhatIDo() {
   return (
     <section className="px-4 py-8 sm:px-6">
       <div
-        className="relative mx-auto w-full max-w-[76rem] overflow-hidden rounded-2xl bg-ink bg-cover bg-center px-6 py-12 sm:px-12"
-        style={{ backgroundImage: `url(${helixAsset.url})` }}
+        className="relative mx-auto w-full max-w-[76rem] overflow-hidden rounded-3xl bg-ink bg-cover bg-center px-6 py-12 sm:px-12 shadow-md"
+        style={{ backgroundImage: `url(${servicesBg})` }}
       >
-        <div className="absolute inset-0 bg-ink/85" />
+        <div className="absolute inset-0 bg-ink/80 backdrop-blur-[2px]" />
         <div className="relative">
-        <h2 className="text-center font-display text-3xl font-black tracking-tight text-cream uppercase sm:text-4xl">
-          Services
-        </h2>
+          <h2 className="text-center font-display text-3xl font-black tracking-tight text-cream uppercase sm:text-4xl">
+            Services
+          </h2>
 
-        <ul className="mx-auto mt-8 max-w-3xl">
-          {services.map((s, i) => (
-            <Reveal
-              as="li"
-              key={s.title}
-              delay={i * 60}
-              className="group flex items-center gap-5 border-b border-cream/15 px-4 py-4 transition-colors last:border-0 hover:bg-cream/5"
-            >
-              <span className="text-xs font-semibold text-orange">0{i + 1}</span>
-              <div>
-                <p className="text-base font-semibold tracking-[0.06em] text-cream uppercase group-hover:text-orange">
-                  {s.title}
-                </p>
-                <p className="mt-1 text-sm text-cream/60">{s.body}</p>
-              </div>
-            </Reveal>
-          ))}
-        </ul>
+          <ul className="mx-auto mt-8 max-w-3xl">
+            {services.map((s, i) => (
+              <Reveal
+                as="li"
+                key={s.title}
+                delay={i * 60}
+                className="group flex items-center gap-5 border-b border-cream/15 px-4 py-4 transition-colors last:border-0 hover:bg-cream/10 rounded-xl"
+              >
+                <span className="text-xs font-semibold text-orange">0{i + 1}</span>
+                <div>
+                  <p className="text-base font-semibold tracking-[0.06em] text-cream uppercase group-hover:text-orange transition-colors">
+                    {s.title}
+                  </p>
+                  <p className="mt-1 text-sm text-cream/70">{s.body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </ul>
         </div>
       </div>
-
     </section>
   );
 }

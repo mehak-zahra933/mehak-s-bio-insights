@@ -3,8 +3,8 @@ import { Reveal } from "./Reveal";
 import { SectionHeader } from "./Sections";
 import { projects, experiences, education, profile } from "./data";
 import genomeAsset from "@/assets/image-8.png.asset.json";
-import projectsAsset from "@/assets/image-6.png.asset.json";
 import eduAsset from "@/assets/image-10.png.asset.json";
+import projectsBg from "@/assets/projects-bg.png";
 
 
 export function Projects() {
@@ -12,106 +12,112 @@ export function Projects() {
 
   return (
     <section id="projects" className="px-4 py-16 sm:px-6">
-      <div className="mx-auto w-full max-w-[76rem]">
-        <div className="flex items-start justify-between gap-6">
-          <h2 className="font-display text-3xl font-black tracking-tight uppercase sm:text-5xl">
-            Projects
-          </h2>
-          <a
-            href="#contact"
-            className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-cream-deep text-center text-[0.55rem] font-semibold tracking-[0.12em] text-ink uppercase transition-colors hover:bg-orange"
-          >
-            View
-            <br />
-            More
-          </a>
-        </div>
-
-        {featured ? (
-          <Reveal className="mt-8 grid gap-8 border-t border-border pt-8 lg:grid-cols-[1.1fr_1fr]">
-            <div
-              className="relative min-h-[14rem] overflow-hidden rounded-2xl bg-ink bg-cover bg-center p-8"
-              style={{ backgroundImage: `url(${projectsAsset.url})` }}
+      <div
+        className="relative mx-auto w-full max-w-[76rem] overflow-hidden rounded-3xl border border-border bg-cover bg-center p-8 sm:p-12 shadow-sm"
+        style={{ backgroundImage: `url(${projectsBg})` }}
+      >
+        <div className="absolute inset-0 bg-background/90 backdrop-blur-[2px]" />
+        <div className="relative">
+          <div className="flex items-start justify-between gap-6">
+            <h2 className="font-display text-3xl font-black tracking-tight uppercase sm:text-5xl text-heading">
+              Projects
+            </h2>
+            <a
+              href="#contact"
+              className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-card border border-border text-center text-[0.55rem] font-semibold tracking-[0.12em] text-ink uppercase shadow-xs transition-colors hover:bg-orange hover:text-white hover:border-orange"
             >
-              <div className="absolute inset-0 bg-ink/70" />
-              <p className="relative font-display text-2xl font-black text-cream uppercase">
-                {featured.category}
-              </p>
-              <span className="absolute right-6 bottom-6 flex h-14 w-14 items-center justify-center rounded-full bg-orange text-ink">
-                <ArrowUpRight className="h-6 w-6" />
-              </span>
-            </div>
-            <div>
-              <p className="text-[0.62rem] tracking-[0.18em] text-muted-foreground uppercase">
-                {featured.category}
-              </p>
-              <h3 className="mt-2 font-display text-2xl font-black uppercase">
-                {featured.title}
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed">{featured.description}</p>
-              <div className="mt-6 flex flex-wrap gap-10">
-                <div>
-                  <p className="text-[0.6rem] font-semibold tracking-[0.16em] text-ink uppercase">
-                    Tech
-                  </p>
-                  <p className="mt-1 text-sm">{featured.tech.join(", ")}</p>
-                </div>
-                <div>
-                  <p className="text-[0.6rem] font-semibold tracking-[0.16em] text-ink uppercase">
-                    Links
-                  </p>
-                  <a
-                    href={featured.github ?? "#"}
-                    className="mt-1 inline-flex items-center gap-2 text-sm hover:text-orange"
-                  >
-                    <Github className="h-4 w-4" /> GitHub
-                  </a>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-        ) : null}
+              View
+              <br />
+              More
+            </a>
+          </div>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2">
-          {rest.map((p, i) => (
-            <Reveal key={p.title} delay={i * 60}>
-              <div className="card-lift rounded-2xl border border-border bg-card p-7">
-                <p className="text-[0.6rem] tracking-[0.18em] text-muted-foreground uppercase">
-                  {p.category}
+          {featured ? (
+            <Reveal className="mt-8 grid gap-8 border-t border-border pt-8 lg:grid-cols-[1.1fr_1fr]">
+              <div
+                className="relative min-h-[16rem] overflow-hidden rounded-2xl bg-ink bg-cover bg-center p-8 shadow-sm border border-border/60"
+                style={{ backgroundImage: `url(${projectsBg})` }}
+              >
+                <div className="absolute inset-0 bg-ink/75 backdrop-blur-[1px]" />
+                <p className="relative font-display text-2xl font-black text-cream uppercase">
+                  {featured.category}
                 </p>
-                <h3 className="mt-2 font-display text-xl font-black uppercase">
-                  {p.title}
+                <span className="absolute right-6 bottom-6 flex h-14 w-14 items-center justify-center rounded-full bg-orange text-white shadow-md transition-transform hover:scale-105">
+                  <ArrowUpRight className="h-6 w-6" />
+                </span>
+              </div>
+              <div className="rounded-2xl border border-border/80 bg-card/95 backdrop-blur-sm p-6 shadow-sm">
+                <p className="text-[0.62rem] font-semibold tracking-[0.18em] text-muted-foreground uppercase">
+                  {featured.category}
+                </p>
+                <h3 className="mt-2 font-display text-2xl font-black uppercase text-heading">
+                  {featured.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed">{p.description}</p>
-                <ul className="mt-5 flex flex-wrap gap-2">
-                  {p.tech.map((t) => (
-                    <li
-                      key={t}
-                      className="rounded-full bg-cream-deep px-2.5 py-1 text-[0.65rem] tracking-wide uppercase"
-                    >
-                      {t}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-6 flex flex-wrap gap-4 border-t border-border pt-5 text-sm">
-                  <a
-                    href={p.github ?? "#"}
-                    className="inline-flex items-center gap-2 hover:text-orange"
-                  >
-                    <Github className="h-4 w-4" /> GitHub
-                  </a>
-                  {p.demo !== undefined && (
+                <p className="mt-3 text-sm leading-relaxed text-foreground">{featured.description}</p>
+                <div className="mt-6 flex flex-wrap gap-10">
+                  <div>
+                    <p className="text-[0.6rem] font-semibold tracking-[0.16em] text-ink uppercase">
+                      Tech
+                    </p>
+                    <p className="mt-1 text-sm">{featured.tech.join(", ")}</p>
+                  </div>
+                  <div>
+                    <p className="text-[0.6rem] font-semibold tracking-[0.16em] text-ink uppercase">
+                      Links
+                    </p>
                     <a
-                      href={p.demo}
-                      className="inline-flex items-center gap-2 hover:text-orange"
+                      href={featured.github ?? "#"}
+                      className="mt-1 inline-flex items-center gap-2 text-sm text-ink hover:text-orange font-medium"
                     >
-                      <ExternalLink className="h-4 w-4" /> Demo
+                      <Github className="h-4 w-4" /> GitHub
                     </a>
-                  )}
+                  </div>
                 </div>
               </div>
             </Reveal>
-          ))}
+          ) : null}
+
+          <div className="mt-10 grid gap-6 sm:grid-cols-2">
+            {rest.map((p, i) => (
+              <Reveal key={p.title} delay={i * 60}>
+                <div className="card-lift rounded-2xl border border-border/80 bg-card/95 backdrop-blur-sm p-7 shadow-sm">
+                  <p className="text-[0.6rem] font-semibold tracking-[0.18em] text-muted-foreground uppercase">
+                    {p.category}
+                  </p>
+                  <h3 className="mt-2 font-display text-xl font-black uppercase text-heading">
+                    {p.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-foreground">{p.description}</p>
+                  <ul className="mt-5 flex flex-wrap gap-2">
+                    {p.tech.map((t) => (
+                      <li
+                        key={t}
+                        className="rounded-full bg-cream-deep px-2.5 py-1 text-[0.65rem] font-medium tracking-wide uppercase text-ink/90"
+                      >
+                        {t}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-6 flex flex-wrap gap-4 border-t border-border pt-5 text-sm">
+                    <a
+                      href={p.github ?? "#"}
+                      className="inline-flex items-center gap-2 text-ink hover:text-orange font-medium"
+                    >
+                      <Github className="h-4 w-4" /> GitHub
+                    </a>
+                    {p.demo !== undefined && (
+                      <a
+                        href={p.demo}
+                        className="inline-flex items-center gap-2 text-ink hover:text-orange font-medium"
+                      >
+                        <ExternalLink className="h-4 w-4" /> Demo
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </div>
     </section>
