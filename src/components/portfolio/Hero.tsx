@@ -7,9 +7,9 @@ export function Hero() {
         <img
           src={heroBg}
           alt="Researcher analysing microscopy imaging data in a molecular biology lab"
-          className="h-[26rem] w-full object-cover opacity-70 sm:h-[32rem]"
+          className="h-[26rem] w-full object-cover opacity-90 sm:h-[32rem]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/35" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/20 via-ink/10 to-transparent" />
 
         <div className="absolute inset-0 flex flex-col justify-between p-7 sm:p-10">
           <div className="flex items-start justify-between gap-8">
