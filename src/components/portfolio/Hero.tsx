@@ -1,11 +1,11 @@
-import heroAsset from "@/assets/image-7.png.asset.json";
+import heroBg from "@/assets/hero-bg.png";
 
 export function Hero() {
   return (
     <section id="home" className="px-4 pt-5 sm:px-6">
       <div className="relative mx-auto w-full max-w-[76rem] overflow-hidden rounded-2xl bg-ink">
         <img
-          src={heroAsset.url}
+          src={heroBg}
           alt="Researcher analysing microscopy imaging data in a molecular biology lab"
           className="h-[26rem] w-full object-cover opacity-70 sm:h-[32rem]"
         />
