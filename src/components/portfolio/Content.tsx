@@ -16,7 +16,7 @@ export function Projects() {
         className="relative mx-auto w-full max-w-[76rem] overflow-hidden rounded-3xl border border-border bg-cover bg-center p-8 sm:p-12 shadow-sm"
         style={{ backgroundImage: `url(${projectsBg})` }}
       >
-        <div className="absolute inset-0 bg-background/90 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-background/70 backdrop-blur-[2px]" />
         <div className="relative">
           <div className="flex items-start justify-between gap-6">
             <h2 className="font-display text-3xl font-black tracking-tight uppercase sm:text-5xl text-heading">
@@ -38,7 +38,7 @@ export function Projects() {
                 className="relative min-h-[16rem] overflow-hidden rounded-2xl bg-ink bg-cover bg-center p-8 shadow-sm border border-border/60"
                 style={{ backgroundImage: `url(${projectsBg})` }}
               >
-                <div className="absolute inset-0 bg-ink/75 backdrop-blur-[1px]" />
+                <div className="absolute inset-0 bg-ink/70 backdrop-blur-[1px]" />
                 <p className="relative font-display text-2xl font-black text-cream uppercase">
                   {featured.category}
                 </p>

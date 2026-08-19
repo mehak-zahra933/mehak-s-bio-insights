@@ -84,7 +84,7 @@ export function Skills() {
         className="relative mx-auto w-full max-w-[76rem] overflow-hidden rounded-3xl border border-border bg-cover bg-center p-8 sm:p-12 shadow-sm"
         style={{ backgroundImage: `url(${skillsBg})` }}
       >
-        <div className="absolute inset-0 bg-background/90 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-background/70 backdrop-blur-[2px]" />
         <div className="relative">
           <SectionHeader title="Skills" />
           <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -124,7 +124,7 @@ export function Toolkit() {
           className="relative overflow-hidden rounded-3xl border border-border bg-cover bg-center p-8 sm:p-12 shadow-sm"
           style={{ backgroundImage: `url(${toolkitBg})` }}
         >
-          <div className="absolute inset-0 bg-background/90 backdrop-blur-[2px]" />
+          <div className="absolute inset-0 bg-background/70 backdrop-blur-[2px]" />
           <div className="relative">
             <SectionHeader title="Toolkit" />
             <div className="mt-10 flex flex-wrap gap-2.5">
@@ -151,7 +151,7 @@ export function WhatIDo() {
         className="relative mx-auto w-full max-w-[76rem] overflow-hidden rounded-3xl bg-ink bg-cover bg-center px-6 py-12 sm:px-12 shadow-md"
         style={{ backgroundImage: `url(${servicesBg})` }}
       >
-        <div className="absolute inset-0 bg-ink/80 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-ink/70 backdrop-blur-[2px]" />
         <div className="relative">
           <h2 className="text-center font-display text-3xl font-black tracking-tight text-cream uppercase sm:text-4xl">
             Services
