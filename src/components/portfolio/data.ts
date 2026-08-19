@@ -9,7 +9,7 @@ export const profile = {
   // Replace the placeholders below with real links when available.
   links: {
     github: "https://github.com/mehak-zahra933",
-    linkedin: "https://linkedin.com/in/mehak-zahra933",
+    linkedin: "https://www.linkedin.com/in/mehak-zahra-8a47822bb/",
     email: "mailto:mehak.zahra933@gmail.com",
   },
 };
