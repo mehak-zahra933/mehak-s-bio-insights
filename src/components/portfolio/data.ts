@@ -8,9 +8,9 @@ export const profile = {
   tagline: "Bioinformatics • AI/ML • Computational Biology",
   // Replace the placeholders below with real links when available.
   links: {
-    github: "#", // e.g. "https://github.com/username"
-    linkedin: "#", // e.g. "https://linkedin.com/in/username"
-    email: "#", // e.g. "mailto:name@example.com"
+    github: "https://github.com/mehak-zahra933",
+    linkedin: "https://linkedin.com/in/mehak-zahra933",
+    email: "mailto:mehak.zahra933@gmail.com",
   },
 };
 
