@@ -202,31 +202,40 @@ import { createServerFn } from "@tanstack/react-start";
 const sendEmailFn = createServerFn({ method: "POST" })
   .validator((data: { name: string; email: string; message: string }) => data)
   .handler(async ({ data }) => {
-    const response = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
-      },
-      body: JSON.stringify({
-        from: "onboarding@resend.dev",
-        to: "mehak.zahra933@gmail.com",
-        subject: `Portfolio Contact from ${data.name}`,
-        html: `<p><strong>Name:</strong> ${data.name}</p><p><strong>Email:</strong> ${data.email}</p><p><strong>Message:</strong><br/>${data.message}</p>`,
-      }),
-    });
+    try {
+      const response = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        },
+        body: JSON.stringify({
+          from: "onboarding@resend.dev",
+          to: "mehak.zahra933@gmail.com",
+          subject: `Portfolio Contact from ${data.name}`,
+          html: `<p><strong>Name:</strong> ${data.name}</p><p><strong>Email:</strong> ${data.email}</p><p><strong>Message:</strong><br/>${data.message}</p>`,
+        }),
+      });
 
-    if (!response.ok) {
-      throw new Error("Failed to send email");
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("Resend API Error details:", errorText);
+        throw new Error(errorText || response.statusText);
+      }
+      return { success: true };
+    } catch (e: any) {
+      console.error("Server function caught error:", e);
+      throw new Error(e.message);
     }
-    return { success: true };
   });
 
 export function Contact() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setErrorMessage("");
     const formData = new FormData(e.currentTarget);
     const name = formData.get("name") as string;
     const email = formData.get("email") as string;
@@ -239,8 +248,9 @@ export function Contact() {
       await sendEmailFn({ data: { name, email, message } });
       setStatus("success");
       (e.target as HTMLFormElement).reset();
-    } catch (error) {
-      console.error(error);
+    } catch (error: any) {
+      console.error("Client caught error:", error);
+      setErrorMessage(error.message || "Failed to send");
       setStatus("error");
     }
   };
@@ -306,7 +316,7 @@ export function Contact() {
               {status === "loading" ? "Sending..." : status === "success" ? "Sent!" : "Send Message"}
             </button>
             {status === "error" && (
-              <p className="text-red-400 text-xs mt-1">Failed to send message. Please try again.</p>
+              <p className="text-red-400 text-xs mt-1">Failed: {errorMessage || "Please try again."}</p>
             )}
           </form>
         </div>
