@@ -211,7 +211,7 @@ const sendEmailFn = createServerFn({ method: "POST" })
         },
         body: JSON.stringify({
           from: "onboarding@resend.dev",
-          to: "mehak.zahra933@gmail.com",
+          to: "teadyb726@gmail.com",
           subject: `Portfolio Contact from ${data.name}`,
           html: `<p><strong>Name:</strong> ${data.name}</p><p><strong>Email:</strong> ${data.email}</p><p><strong>Message:</strong><br/>${data.message}</p>`,
         }),
