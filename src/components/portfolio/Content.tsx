@@ -196,7 +196,55 @@ export function Education() {
   );
 }
 
+import { useState } from "react";
+import { createServerFn } from "@tanstack/react-start";
+
+const sendEmailFn = createServerFn({ method: "POST" })
+  .validator((data: { name: string; email: string; message: string }) => data)
+  .handler(async ({ data }) => {
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+      },
+      body: JSON.stringify({
+        from: "onboarding@resend.dev",
+        to: "mehak.zahra933@gmail.com",
+        subject: `Portfolio Contact from ${data.name}`,
+        html: `<p><strong>Name:</strong> ${data.name}</p><p><strong>Email:</strong> ${data.email}</p><p><strong>Message:</strong><br/>${data.message}</p>`,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to send email");
+    }
+    return { success: true };
+  });
+
 export function Contact() {
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const message = formData.get("message") as string;
+
+    if (!name || !email || !message) return;
+
+    try {
+      setStatus("loading");
+      await sendEmailFn({ data: { name, email, message } });
+      setStatus("success");
+      (e.target as HTMLFormElement).reset();
+    } catch (error) {
+      console.error(error);
+      setStatus("error");
+    }
+  };
+
   return (
     <section id="contact" className="px-4 py-8 sm:px-6">
       <div
@@ -229,10 +277,10 @@ export function Contact() {
 
           <form
             className="grid gap-4 self-start rounded-2xl bg-cream/5 p-6"
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={handleSubmit}
           >
-            <Field id="name" label="Name" placeholder="Your name" />
-            <Field id="email" label="Email" type="email" placeholder="you@example.com" />
+            <Field id="name" name="name" label="Name" placeholder="Your name" />
+            <Field id="email" name="email" label="Email" type="email" placeholder="you@example.com" />
             <div className="grid gap-2">
               <label
                 htmlFor="message"
@@ -242,17 +290,24 @@ export function Contact() {
               </label>
               <textarea
                 id="message"
+                name="message"
+                required
                 rows={4}
                 placeholder="Tell me about your idea"
-                className="rounded-lg border border-cream/20 bg-transparent px-3 py-2.5 text-sm text-cream outline-none placeholder:text-cream/35 focus:border-orange"
+                className="rounded-lg border border-cream/20 bg-transparent px-3 py-2.5 text-sm text-cream outline-none placeholder:text-cream/35 focus:border-orange disabled:opacity-50"
+                disabled={status === "loading"}
               />
             </div>
             <button
               type="submit"
-              className="mt-1 inline-flex h-11 items-center justify-center rounded-full bg-orange px-6 text-[0.65rem] font-semibold tracking-[0.16em] text-ink uppercase transition-colors hover:bg-orange-dark"
+              disabled={status === "loading"}
+              className="mt-1 inline-flex h-11 items-center justify-center rounded-full bg-orange px-6 text-[0.65rem] font-semibold tracking-[0.16em] text-ink uppercase transition-colors hover:bg-orange-dark disabled:opacity-50"
             >
-              Send Message
+              {status === "loading" ? "Sending..." : status === "success" ? "Sent!" : "Send Message"}
             </button>
+            {status === "error" && (
+              <p className="text-red-400 text-xs mt-1">Failed to send message. Please try again.</p>
+            )}
           </form>
         </div>
       </div>
@@ -262,11 +317,13 @@ export function Contact() {
 
 function Field({
   id,
+  name,
   label,
   type = "text",
   placeholder,
 }: {
   id: string;
+  name?: string;
   label: string;
   type?: string;
   placeholder?: string;
@@ -281,9 +338,11 @@ function Field({
       </label>
       <input
         id={id}
+        name={name}
         type={type}
+        required
         placeholder={placeholder}
-        className="h-11 rounded-lg border border-cream/20 bg-transparent px-3 text-sm text-cream outline-none placeholder:text-cream/35 focus:border-orange"
+        className="h-11 rounded-lg border border-cream/20 bg-transparent px-3 text-sm text-cream outline-none placeholder:text-cream/35 focus:border-orange disabled:opacity-50"
       />
     </div>
   );
